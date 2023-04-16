@@ -129,11 +129,11 @@ Unsubscribe from event.
 
 =cut
 
-sub unsubscribe($self, $name, $cb) {
+sub unsubscribe($self, $name, $cb=undef) {
   # One
   if ($cb) {
-    @{$self->events->{$name}} = grep { $cb ne $_ } @{$self->events->{$name}};
-    delete $self->events->{$name} unless @{$self->events->{$name}};
+      @{$self->events->{$name}} = grep { $cb ne $_ } @{$self->events->{$name}};
+      delete $self->events->{$name} unless @{$self->events->{$name}};
   } else {
       delete $self->events->{$name}
   }
